@@ -1,0 +1,156 @@
+---
+layout: single
+title: Intigriti’s November XSS Challenge by IvarsVids
+date: 2021-11-15
+classes: wide
+tags:
+  - Intigriti
+  - XSS
+  - Challenge
+  - IvarsVids
+---
+
+The solution is not as intended but it does include some pretty nice tricks, some of which are borrowed from previous challenges.
+
+![share](/assets/images/intigriti/2021/11/share.jpg)
+
+## Overview
+
+The challenge is a simple Vue.js app which lists articles of the 2021 OWASP Top 10. 
+
+To start off, let’s see if the user input gets reflected on the page. Interestingly enough, it does, even twice! Once inside the Vue app, where it is properly escaped and once in the title of the page where it is **not**.
+
+Next I need to check the content security policy of the page.
+
+```
+base-uri 'self';
+default-src 'self'; 
+script-src 'unsafe-eval' 'nonce-...' 'strict-dynamic'; 
+object-src 'none'; 
+style-src 'sha256-...'
+```
+
+This is rather strict and the only way I would be able to execute code is via a `document.createElement(‘script’)` or an `eval` of some sort.
+
+Upon inspecting the source code I find that the javascript code is spread across multiple scripts.
+
+![vulnerable code](/assets/images/intigriti/2021/11/vulnerable-code.png)
+
+The first script sets the `isProd` global variable.
+
+The second script initializes two functions - `addJS` and `initVUE` which are used later on.
+
+The third script sets another global variable, named `delimiters`, followed by a call to the `addJS` function.
+
+The last script seems to be inaccessible since it would only properly execute if the `isProd` variable is initially false or undefined. Then, I would have been able to set two new variables by passing values as a query string parameter, which are `version` and `vueDevtools`. After that a condition is set to check how the `version` variable compares to certain values. In my case, if the version is greater than 1000000000000, the `addJS` function gets invoked and I will be able to pass input of my own.
+
+Ok so let’s follow the execution flow. What happens when after the `addJS` functions gets called? The answer is exactly what I needed! The function **creates a script element**, inserts it into the page and then calls the `initVUE` function. Unfortunately I have no control over the source of this generated script, otherwise I would have been able try and inject code.
+
+## Solution
+
+The only possible option is to somehow remove the first script in order to execute the last one. This is somehow possible thanks to the browser’s abilities to handle broken HTML code. If I manage to close the title and open a script tag it might include the other script as a code which would render it invalid. This way the isProd variable won’t be defined.
+
+It turns out that this works flawlessly!
+
+![comment out script](/assets/images/intigriti/2021/11/comment-out-script.png)
+
+Now I am able to trigger the code in the last script, but first I need to set the required variables.
+
+Now, the next problem is that the version is stripped to the first 12 characters which makes it impossible to be greater than the value 1000000000000, which has 13 characters. However, a quirk to javascript, and some other languages as well, is that loose comparison between different types could lead to unexpected behavior. This is also later mentioned in Intigriti’s second tip:
+
+> Wait, 240610708 is equal to QNKCDZO. But one is a string and the other a number… Hmmm it feels like something interesting could be done with that…
+
+From previous javascript challenges, I know that numbers could be represented in a hexadecimal format. An example for this is cafe… Not that cafe, this one:
+
+```
+0xCAFE === 51966
+0xCAFE > 51965
+'0xCAFE' > 51965
+```
+
+The above expressions result to true, meaning that I am able to convert the decimal value of 1000000000001 into 0xE8D4A51001 and pass the required condition.
+
+However, now comes the hard part, and I mean the really hard part! Get ready to meet the restrictions that turn this challenge into a nightmare.
+
+First are the filters that strip away all special characters from the `vueDevtools` variable.
+
+```
+vueDevtools.replace(/[^0-9%a-z/.]/gi,'').replace(/^\/\/+/,'')
+```
+
+At this point I have no possible ways of injecting code into the newly generated script. This is a DEAD END.
+
+## Unintended Solution
+
+The initial HTML injection is not to be underestimated, especially when a technology such as Vue is involved.
+
+What if I use the rendering engine of Vue to bypass the CSP? Is it possible to inject such a thing?
+
+After a quick google search I found a simple cross-site scripting example for the Vue engine.
+
+```
+{{constructor.constructor('alert(1)')()}}
+```
+
+However, in order for this to work, it needs to be a inside the root element, which isn’t quite possible. What if I override the root element? What if I do something like this:
+
+```
+?s=</title><div+id=app><span+id=poc></span></div>
+```
+
+It turns out that it does precisely that! The Vue app is now under my control!
+
+![vue app takeover](/assets/images/intigriti/2021/11/vue-app-takeover.png)
+
+
+Now I could do something simple as adding the payload inside the div, right? Uh.. no. The restriction nightmare is back!
+
+Remember the third script from the beginning of this article?
+
+```
+var delimiters = ['v-{{', '}}'];
+```
+
+The default Vue.js delimiters are changed to `v-{{}}` instead.
+
+Ok a simple `v` with a dash in front of the curly brackets. What gives?
+
+That’s the trick, there is another filter, this time hidden in the back-end of the challenge. Whenever I inject a `v-` it gets substituted by `%v%` which cannot trigger the Vue engine.
+
+What if I override the delimiters to somehow get them back to defaults?
+
+I tried using DOM cloberring to override the delimiter global variable but my attempt was unsuccessful.
+
+Somehow, I remembered one strange HTML parser behavior when doing the previous Intigriti challenge. If I inject a `<select>` element and add some content inside it, all will be erased leaving only the text content. Here is an example:
+
+```
+<select><h1>Ba<br>na<br>na</h1><select>
+```
+
+And the result:
+
+![banana](/assets/images/intigriti/2021/11/banana.png)
+
+What if I use this to evade the backed filter? There would be no need in changing the delimiters.
+
+Here is an example bypass:
+
+```
+<select>v<br>-{{constructor.constructor('alert()')()}}</select>
+```
+
+To my surprise, it works! The backend filter does not detect a thing.
+
+![filter bypass](/assets/images/intigriti/2021/11/filter-bypass.png)
+
+Now, all I need to do is to put this piece of code inside the new Vue app.
+
+```
+</title><div+id=app><select>v<br>-{{constructor.constructor('alert(document.domain)')()}}</select></div>
+```
+
+And it works like a charm.
+
+![alert](/assets/images/intigriti/2021/11/alert.png)
+
+Thanks for reading!
