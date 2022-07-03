@@ -10,7 +10,7 @@ tags:
   - E1u5iv3F0x
 ---
 
-Weak referrer policy abd best-fit mapping transformations lead to 
+Weak referrer policy and best-fit mapping transformations lead to cross-site scripting.
 
 ![share](/assets/images/intigriti/2021/12/share.jpg)
 
