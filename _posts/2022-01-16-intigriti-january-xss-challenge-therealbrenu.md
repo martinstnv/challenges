@@ -196,6 +196,7 @@ function handleAttributes(element) {
   }
 }
 ```
+
 So now I just need to craft a quick payload like `/result?payload=<i+data-debug=alert(document.domain)>` and hopefully all will go as planned!
 
 ![alert](/assets/images/intigriti/2022/01/alert.png)
