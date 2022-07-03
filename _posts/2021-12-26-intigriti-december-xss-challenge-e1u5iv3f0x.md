@@ -1,6 +1,6 @@
 ---
 layout: single
-title: Intigriti’s December XSS challenge By E1u5iv3F0x
+title: Intigriti’s December XSS Challenge By E1u5iv3F0x
 date: 2021-12-26
 classes: wide
 tags:
