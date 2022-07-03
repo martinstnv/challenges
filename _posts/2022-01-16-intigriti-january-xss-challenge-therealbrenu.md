@@ -1,18 +1,18 @@
 ---
 layout: single
 title: Intigriti’s January XSS Challenge By TheRealBrenu
-date: 2021-11-15
+date: 2022-01-16
 classes: wide
 tags:
   - Intigriti
   - XSS
   - Challenge
-  - IvarsVids
+  - TheRealBrenu
 ---
 
-![share](/assets/images/intigriti/2022/01/share.jpg)
-
 First challenge for 2022 is here by TheRealBrenu. This one is a good example of javascript source maps, which I was unfamiliar at first. However, more on that later.
+
+![share](/assets/images/intigriti/2022/01/share.jpg)
 
 ## Overview
 The challenge starts off as a simple page with nothing more than a simple text area and a button. You can submit some text and it will render it out on another page with the path `result` and a query string parameter `payload`.
@@ -51,11 +51,7 @@ Here I see some important keywords mentioned, such as `payloadFromUrl`, `data-de
 
 Upon looking at the components in the pages folder, I find that most of the code is not really readable. I get it that this is used for some kind of obfuscation. I was more interested in the component that loaded on the `result` path. The name of this component was obfuscated as well but I supposed it was `I0x1`, which was mapped to `Result`.
 
-```
-import { useState } from "react";
-import DOMPurify from "dompurify";
-import "../../App.css";
-
+```jsx
 function I0x1({ identifiers }) {
   const [I0x2, _] = useState(() => {
     const I0x3 = new URLSearchParams(
@@ -125,19 +121,13 @@ function I0x1({ identifiers }) {
     </div>
   );
 }
-
-export default I0x1;
 ```
 
 What I did from here on out was to manually swap all keywords to their corresponding places. I didn't bother to automate the process and did it by hand which took about 15 minutes.
 
 Here is the de-obfuscated result:
 
-```
-import { useState } from "react";
-import DOMPurify from "dompurify";
-import "../../App.css";
-
+```jsx
 function Result() {
 
     const [payloadFromUrl, _] = useState(() => {
@@ -189,14 +179,23 @@ function Result() {
     </div>
   );
 }
-
-export default Result;
 ```
 
 The `handleAttributes` seems a bit dangerous. The method dives in recursively into all child attributes and if they correspond to the “data-debug" keyword, the values would be passed as arguments to a Function constructor.
 
 Most people aware of XSS might know that the `Function` constructor is actually a dangerous function and will evaluate string arguments.
 
+```js
+function handleAttributes(element) {
+  for (const child of element.children) {
+    if ("data-debug" in child.attributes ) {
+      new Function(child.getAttribute("data-debug"))();
+    }
+
+    handleAttributes(child);
+  }
+}
+```
 So now I just need to craft a quick payload like `/result?payload=<i+data-debug=alert(document.domain)>` and hopefully all will go as planned!
 
 ![alert](/assets/images/intigriti/2022/01/alert.png)
