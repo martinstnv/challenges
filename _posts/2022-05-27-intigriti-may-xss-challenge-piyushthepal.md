@@ -10,7 +10,7 @@ tags:
   - PiyushThePal
 ---
 
-How far can you take prototype pollution? This challenge is a great showcase which uses an unpatched jQuery plugin to exploit and bypass two types of filters.
+This challenge is a great showcase of an unpatched jQuery plugin used to exploit and bypass two types of filters.
 
 ![share](/assets/images/intigriti/2022/05/share.jpg)
 
@@ -84,9 +84,7 @@ After a quick debug, I indeed found out that the options object does not have an
 
 ## Solution
 
-Lets read more about the `whiteList` attribute.
-
-I found a documentation on [this GitHub link](https://github.com/leizongmin/js-xss).
+Lets read more about the `whiteList` attribute. I found a documentation on [this GitHub link](https://github.com/leizongmin/js-xss).
 
 > By specifying a `whiteList`, e.g. `{ 'tagName': [ 'attr-1', 'attr-2' ] }`. Tags and attributes not in the whitelist would be filter out.
 
@@ -102,8 +100,10 @@ Here is the complete string that I’ve constructed:
 ?__proto__[whiteList][svg][]=onload&__proto__[0]=<svg+onload%3Dalert(document.domain)>&page=0
 ```
 
-Now let test this out.
+Now lets test this out.
 
 ![alert](/assets/images/intigriti/2022/05/alert.png)
 
-It works. Thanks for reading!
+It works.
+
+Thanks for reading!
