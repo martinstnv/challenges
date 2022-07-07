@@ -1,6 +1,6 @@
 ---
 layout: single
-title: Intigriti’s October XSS Challenge by 0xTib3rius
+title: Intigriti’s October XSS Challenge by @0xTib3rius
 date: 2021-10-25
 classes: wide
 tags:

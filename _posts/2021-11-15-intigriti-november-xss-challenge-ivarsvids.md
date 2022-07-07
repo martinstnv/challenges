@@ -1,6 +1,6 @@
 ---
 layout: single
-title: Intigriti’s November XSS Challenge by IvarsVids
+title: Intigriti’s November XSS Challenge by @IvarsVids
 date: 2021-11-15
 classes: wide
 tags:

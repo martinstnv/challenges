@@ -1,6 +1,6 @@
 ---
 layout: single
-title: Intigriti’s January XSS Challenge By TheRealBrenu
+title: Intigriti’s January XSS Challenge By @TheRealBrenu
 date: 2022-01-16
 classes: wide
 tags:

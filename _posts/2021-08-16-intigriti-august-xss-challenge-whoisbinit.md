@@ -1,6 +1,6 @@
 ---
 layout: single
-title: Intigriti’s August XSS Challenge by WHOISbinit
+title: Intigriti’s August XSS Challenge by @WHOISbinit
 date: 2021-08-16
 classes: wide
 tags:

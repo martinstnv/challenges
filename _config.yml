@@ -114,9 +114,6 @@ author:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/martinstnv"
-    - label: "Linkedin"
-      icon: "fas fa-fw fa-linkedin-in"
-      url: "https://www.linkedin.com/in/martinstnv/"
 
 # Site Footer
 footer:
@@ -127,10 +124,6 @@ footer:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/martinstnv"
-    - label: "Linkedin"
-      icon: "fas fa-fw fa-linkedin-in"
-      url: "https://www.linkedin.com/in/martinstnv/"
-
 
 # Reading Files
 include:
