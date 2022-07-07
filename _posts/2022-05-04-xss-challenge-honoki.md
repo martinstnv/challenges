@@ -1,6 +1,6 @@
 ---
 layout: single
-title: XSS Challenge By @honoki
+title: XSS Challenge By Honoki
 date: 2022-05-04
 classes: wide
 tags:

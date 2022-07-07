@@ -1,6 +1,6 @@
 ---
 layout: single
-title: Intigriti’s May XSS Challenge by @GrumpingouT
+title: Intigriti’s May XSS Challenge by GrumpingouT
 date: 2021-05-31
 classes: wide
 tags:

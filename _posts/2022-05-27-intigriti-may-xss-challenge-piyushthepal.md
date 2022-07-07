@@ -1,6 +1,6 @@
 ---
 layout: single
-title: Intigriti's May XSS challenge By @PiyushThePal
+title: Intigriti's May XSS challenge By PiyushThePal
 date: 2022-05-27
 classes: wide
 tags:

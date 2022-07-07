@@ -1,6 +1,6 @@
 ---
 layout: single
-title: Intigriti’s February XSS Challenge By @aszx87410
+title: Intigriti’s February XSS Challenge By aszx87410
 date: 2022-02-07
 classes: wide
 tags:

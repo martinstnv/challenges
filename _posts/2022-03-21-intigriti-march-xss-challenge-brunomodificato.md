@@ -1,6 +1,6 @@
 ---
 layout: single
-title: Intigriti’s March XSS Challenge By @BrunoModificato
+title: Intigriti’s March XSS Challenge By BrunoModificato
 date: 2022-03-21
 classes: wide
 tags:
