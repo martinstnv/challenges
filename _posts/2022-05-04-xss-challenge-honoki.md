@@ -1,6 +1,6 @@
 ---
 layout: single
-title: XSS challenge By honoki
+title: XSS Challenge By @honoki
 date: 2022-05-04
 classes: wide
 tags:
@@ -11,9 +11,11 @@ tags:
 
 How could two security features collide into a vulnerability? Read more to find out!
 
-![twitter-post](/assets/images/other/honoki/twitter-post.png)
-
 ## Overview
+
+The gist of the challenge is:
+
+> I came across an interesting XSS today. Can you spot the bug and exploit it?
 
 To start off, here is the complete codebase of the challenge.
 
@@ -44,7 +46,7 @@ The first issue here is the insecure assignment on `window.location`, which defi
 
 Unfortunately, this is only half of the challenge. As honoki explained, here's what needs to be done:
 
-![twitter-clarification](/assets/images/other/honoki/twitter-clarification.png)
+> I’m getting a lot of solutions using postMessage to generate the alert from the devtools; that’s good but only half the challenge. 😇 Try and make sure that your payload works when sent from another website/domain to solve it completely. 👏
 
 This could only be done if the origin check at `originAllowed` is somehow insecure or broken.
 
