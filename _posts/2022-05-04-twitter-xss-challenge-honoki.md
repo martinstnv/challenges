@@ -4,6 +4,7 @@ title: XSS Challenge By Honoki
 date: 2022-05-04
 classes: wide
 tags:
+  - Twitter
   - XSS
   - Challenge
   - honoki
@@ -11,11 +12,9 @@ tags:
 
 How could two security features collide into a vulnerability? Read more to find out!
 
+![twitter challenge](/assets/images/twitter/honoki/twitter-challenge.png)
+
 ## Overview
-
-The gist of the challenge is:
-
-> I came across an interesting XSS today. Can you spot the bug and exploit it?
 
 To start off, here is the complete codebase of the challenge.
 
@@ -42,11 +41,11 @@ window.addEventListener("message", function(e) {
 
 The first issue here is the insecure assignment on `window.location`, which definitely leads to XSS. Here is a small PoC:
 
-![self-xss](/assets/images/other/honoki/self-xss.png)
+![self-xss](/assets/images/twitter/honoki/self-xss.png)
 
-Unfortunately, this is only half of the challenge. As honoki explained, here's what needs to be done:
+Unfortunately, this is only half of the challenge. Here's a hint from the author:
 
-> I’m getting a lot of solutions using postMessage to generate the alert from the devtools; that’s good but only half the challenge. 😇 Try and make sure that your payload works when sent from another website/domain to solve it completely. 👏
+![twitter hint](/assets/images/twitter/honoki/twitter-hint.png)
 
 This could only be done if the origin check at `originAllowed` is somehow insecure or broken.
 
@@ -60,11 +59,11 @@ new URL(o,window.location.origin)
 
 Using the location origin as an URL base is a bad idea.
 
-![twitter comment](/assets/images/other/honoki/twitter-comment.png)
+![twitter comment](/assets/images/twitter/honoki/twitter-comment.png)
 
 If I were to somehow hide my origin, then the following would happen:
 
-![null-origin](/assets/images/other/honoki/null-origin.png)
+![null-origin](/assets/images/twitter/honoki/null-origin.png)
 
 If an `iframe` makes a `postMessage` call and has a `sandbox` attribute that doesn’t contain the value `allow-same-origin`, [browsers give it a “unique” origin](https://html.spec.whatwg.org/multipage/iframe-embed-object.html#the-iframe-element:concept-origin-2):
 
@@ -105,6 +104,6 @@ The `allow-scripts`, `allow-popups` and `allow-popups-to-escape-sandbox` are req
 
 Here is the result when I run it on a local server.
 
-![alert](/assets/images/other/honoki/alert.png)
+![alert](/assets/images/twitter/honoki/alert.png)
 
 Thanks for reading!
