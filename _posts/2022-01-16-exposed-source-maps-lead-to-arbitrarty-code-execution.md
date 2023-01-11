@@ -1,6 +1,6 @@
 ---
 layout: single
-title: Intigriti’s January XSS Challenge By TheRealBrenu
+title: Exposed Source Maps lead to Arbitrary Code Execution
 date: 2022-01-16
 classes: wide
 tags:
@@ -10,7 +10,7 @@ tags:
   - TheRealBrenu
 ---
 
-First challenge for 2022 is here by TheRealBrenu. This one is a good example of javascript source maps, which I was unfamiliar at first. However, more on that later.
+Exposed source maps lead to arbirary code execution.
 
 ![share](/assets/images/intigriti/2022/01/share.jpg)
 
