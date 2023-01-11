@@ -1,16 +1,15 @@
 ---
 layout: single
-title: Intigriti’s May XSS Challenge by GrumpingouT
+title: Atomic Javascript
 date: 2021-05-31
 classes: wide
 tags:
   - Intigriti
-  - XSS
   - Challenge
   - GrumpingouT
 ---
 
-How to execute XSS without letters, parenthesis and quotes? Read more to find out!
+How to execute arbitrary code using only the atomic parts of javascript?
 
 ![share](/assets/images/intigriti/2021/05/share.jpg)
 
