@@ -1,6 +1,6 @@
 ---
 layout: single
-title: Intigriti’s February XSS Challenge By aszx87410
+title: Using Javascript Labels to Bypass Length Restrictions 
 date: 2022-02-07
 classes: wide
 tags:
@@ -10,7 +10,7 @@ tags:
   - aszx87410
 ---
 
-February’s XSS challenge is here! On the surface the challenge seems simple but it actually gives light upon two very interesting topics - Javascript labels and Firefox SVG elements. Read more to find out!
+Javascript labels and SVG elements to execute arbitrary code in Firefox.
 
 ![share](/assets/images/intigriti/2022/02/share.jpg)
 
