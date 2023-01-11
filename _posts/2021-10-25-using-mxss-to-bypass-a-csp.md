@@ -1,16 +1,15 @@
 ---
 layout: single
-title: Intigriti’s October XSS Challenge by 0xTib3rius
+title: Using mXSS to Bypass a CSP
 date: 2021-10-25
 classes: wide
 tags:
   - Intigriti
-  - XSS
   - Challenge
   - 0xTib3rius
 ---
 
-Broken syntax and weird browser behavior lead to cross-site scripting. This is my solution to the Halloween edition of Intigriti’s XSS challenge!
+Broken syntax and weird browser behavior lead to cross-site scripting.
 
 ![share](/assets/images/intigriti/2021/10/share.jpg)
 
