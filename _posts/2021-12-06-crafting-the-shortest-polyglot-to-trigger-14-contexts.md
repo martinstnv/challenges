@@ -1,6 +1,6 @@
 ---
 layout: single
-title: Crafting the Shortest Polyglot to Triggers 14 Contexts
+title: Crafting the Shortest Polyglot to Trigger 14 Contexts
 date: 2021-12-06
 classes: wide
 tags:
