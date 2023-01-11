@@ -10,7 +10,7 @@ tags:
   - aszx87410
 ---
 
-Javascript labels and SVG elements to execute arbitrary code in Firefox.
+Using javascript labels and SVG elements to execute arbitrary code in Firefox.
 
 ![share](/assets/images/intigriti/2022/02/share.jpg)
 
