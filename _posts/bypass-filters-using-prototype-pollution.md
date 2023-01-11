@@ -1,16 +1,15 @@
 ---
 layout: single
-title: Intigriti's May XSS challenge By PiyushThePal
+title: Bypass Filters using Prototype Pollution
 date: 2022-05-27
 classes: wide
 tags:
   - Intigriti
-  - XSS
   - Challenge
   - PiyushThePal
 ---
 
-This challenge is a great showcase of an unpatched jQuery plugin used to exploit and bypass two types of filters.
+Use prototype pollution to bypass the "js-xss" sanitizer.
 
 ![share](/assets/images/intigriti/2022/05/share.jpg)
 
