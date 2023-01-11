@@ -1,6 +1,6 @@
 ---
 layout: single
-title: Using mXSS to Bypass a CSP
+title: Using Invalid HTML Syntax to Bypass a CSP
 date: 2021-10-25
 classes: wide
 tags:
