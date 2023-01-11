@@ -1,16 +1,15 @@
 ---
 layout: single
-title: Intigriti’s March XSS Challenge By BrunoModificato
+title: CSP Bypass using a Buffer Overflow
 date: 2022-03-21
 classes: wide
 tags:
   - Intigriti
-  - XSS
   - Challenge
   - aszx87410
 ---
 
-This month’s challenge was a bit tricky, but still fun nonetheless. The main goal is to bypass CSP protection **in a way that is not mentioned elsewhere**. Apart from that the challenge offers two more barriers - a CSRF token and an XSS filter. If you’re interested how this challenge was solved, I suggest you to continue reading!
+The main goal is to bypass CSP, CSRF protection and an restricted charset.
 
 ![share](/assets/images/intigriti/2022/03/share.jpg)
 
