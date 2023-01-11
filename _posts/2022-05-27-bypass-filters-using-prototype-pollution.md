@@ -19,7 +19,7 @@ Let's start off with the code. Here is what's important.
 
 ![vulnerable code](/assets/images/intigriti/2022/05/vulnerable-code.png)
 
-There isan object named “pages” which has four numeric attributes, each of them having plain html content as values. The weird part in all of this is the numeric naming convention used for the object attributes.
+There is an object named “pages” which has four numeric attributes, each of them having plain html content as values. The weird part in all of this is the numeric naming convention used for the object attributes.
 
 Apart from this, the challenge has two dependencies - [jQuery.query](https://github.com/bmitchelmore/jquery.plugins/blob/main/jquery.query.js) and [js-xss](https://www.npmjs.com/package/xss). 
 
