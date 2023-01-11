@@ -1,6 +1,6 @@
 ---
 layout: single
-title: Atomic Javascript
+title: Filter Bypass using the Atomic parts of Javascript
 date: 2021-05-31
 classes: wide
 tags:
