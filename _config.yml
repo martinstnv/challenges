@@ -16,7 +16,7 @@ minimal_mistakes_skin    : "air" # "default", "air", "aqua", "contrast", "dark",
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Personal Blog"
+title                    : "Personal Archive"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Martin Stoynov"
@@ -106,7 +106,7 @@ analytics:
 author:
   name             : "Martin Stoynov"
   avatar           : "/assets/images/7386283E-D2BD-4683-9292-BCF8634AD71D.jpeg"
-  bio              : "Penetration Tester"
+  bio              : "Security Engineer"
   links:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
